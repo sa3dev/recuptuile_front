@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { RecupService } from '../../../services/recup.service';
+import { DATA } from '../../../models/recup-data';
+import { RecupModel } from 'src/app/models/recup-model';
+
 
 @Component({
   selector: 'app-recup-detail',
@@ -7,9 +12,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecupDetailComponent implements OnInit {
 
-  constructor() { }
+  detailItem;
+
+  constructor(
+    private activeRoute: ActivatedRoute,
+    private recupService: RecupService) { }
 
   ngOnInit() {
+
+    this.activeRoute.params.subscribe(
+      data => {
+        this.detailItem = DATA.find(el => {
+          return el.id === data.id;
+        });
+      }
+    );
   }
 
 }

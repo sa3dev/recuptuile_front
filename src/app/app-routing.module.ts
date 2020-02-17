@@ -7,6 +7,7 @@ import { RecupComponent } from './recup/recup.component';
 import { AllRecupComponent } from './component/recup/all-recup/all-recup.component';
 import { NewRecupComponent } from './component/recup/new-recup/new-recup.component';
 import { HowItWorkComponent } from './component/recup/how-it-work/how-it-work.component';
+import { RecupDetailComponent } from './component/recup/recup-detail/recup-detail.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
     { path: '', redirectTo: 'all', pathMatch: 'full' },
     { path: 'all', component: AllRecupComponent},
     { path: 'new-recup' , component: NewRecupComponent },
-    { path: 'how-it-work' , component: HowItWorkComponent },
+    { path: 'how-it-work', component: HowItWorkComponent },
+    { path: 'detail/:id', component: RecupDetailComponent },
   ]}
 ];
 

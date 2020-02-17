@@ -1,1 +1,17 @@
-<p>recup-detail works!</p>
+{{ detailItem | json}}
+
+<div class="detail">
+    <mat-card>
+        <p>numero réference: {{ detailItem.id}}</p>
+
+        <div class="recap-space-time">
+            <span>Supérficie: {{  detailItem.superfices ? detailItem.superfices + ' m2' : '' }}</span>
+            <span>Date prévu de passage: {{  detailItem.dateofpassage }} </span>
+        </div>
+
+        <div class="gmap">
+            
+        </div>
+    </mat-card>
+
+</div>

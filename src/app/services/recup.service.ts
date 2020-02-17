@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { DATA } from '../models/recup-data';
 
 @Injectable({
   providedIn: 'root'
@@ -14,13 +15,14 @@ export class RecupService {
 
   }
 
-  getRecupByID() {
-
-  }
+  // getItemById(id) {
+  //   return DATA.forEach(element => {
+  //     return  id === element.id;
+  //   });
+  // }
 
   deleteRecupbyID() {
-
   }
 
-  
+
 }
