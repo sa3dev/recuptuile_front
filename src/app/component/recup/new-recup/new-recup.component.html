@@ -1,0 +1,23 @@
+<div class="newRecup" >
+    <h3>Nouvelle demande</h3>
+
+    <form formGroup="newRecupForm" (ngSubmit)="onSubmit()">
+      
+        <input 
+        type="text" 
+        placeholder="adresse" 
+        formControlName="adress">
+      
+        <input 
+        type="text" 
+        placeholder="number of m2" 
+        formControlName="superfices">
+      
+        <input 
+        type="text" 
+        placeholder="date"
+        formControlName="dateofpassage">
+
+      <button >Valider</button>
+    </form>
+</div>

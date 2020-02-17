@@ -1,0 +1,20 @@
+<form  class="contact-form">
+
+  <mat-form-field class="full-width">
+    <mat-label>Sujet</mat-label>
+    <input matInput placeholder="" >
+  </mat-form-field>
+
+   <mat-form-field class="full-width">
+     <mat-label>n°siren</mat-label>
+     <input matInput placeholder="">
+   </mat-form-field>
+
+  <mat-form-field class="full-width">
+    <mat-label>Leave a comment</mat-label>
+    <textarea matInput placeholder=""></textarea>
+  </mat-form-field>
+
+  <app-form-contact [textValue]="'valider'" ></app-form-contact>
+
+</form>

@@ -1,0 +1,16 @@
+.nav-recup{
+
+    display: flex;
+    justify-content: center;
+
+    button {
+        color: grey;
+        padding: 18px;
+    }
+
+    button.active{
+        color :black;
+        background-color: grey;
+    }
+
+}
