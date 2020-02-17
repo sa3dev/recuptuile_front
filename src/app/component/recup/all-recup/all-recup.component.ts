@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RecupModel } from '../../../models/recup-model';
+import { DATA } from '../../../models/recup-data';
 
 @Component({
   selector: 'app-all-recup',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllRecupComponent implements OnInit {
 
+  listRecup: RecupModel[];
+
   constructor() { }
 
   ngOnInit() {
+    this.listRecup = DATA;
   }
 
 }

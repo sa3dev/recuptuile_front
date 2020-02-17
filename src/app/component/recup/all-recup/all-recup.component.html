@@ -1,1 +1,25 @@
-<p>all-recup works!</p>
+<div id="all-recup">
+
+    <mat-card *ngFor="let item of listRecup" >
+        <h3>
+            New Récup dispo !
+        </h3>
+
+        <p>{{  item.adress }}</p>
+        
+        <hr>
+        <div class="superficies">
+            <p>Toiture: {{ item.superfices ?   item.superfices + ' m2' : 'non-renseigné'  }}</p>
+            <!-- Composant dynamique qui chargerais l'espace correspondant a la superficie ' -->
+
+        </div>
+
+        <p>Date de passage: {{ item.dateofpassage }}</p>
+
+        <button mat-stroked-button color="accent">
+            Détail de récuperation
+        </button>
+
+    </mat-card>
+    
+</div>

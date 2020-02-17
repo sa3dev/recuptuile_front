@@ -1,0 +1,17 @@
+#all-recup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+mat-card {
+    width: 40%;
+    margin: 35px;
+    padding: 15px;
+}
+
+hr {
+    border-color:#c2185b;
+    opacity: 0.8;
+}
