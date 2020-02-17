@@ -3,4 +3,5 @@ export interface RecupModel {
     adress: string;
     superfices: number;
     dateofpassage: string;
+    isDatePassed?: boolean;
 }

@@ -2,7 +2,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin-top: 25px;
+    // margin-top: 25px;
+    position: relative;
 }
 
 mat-card {
@@ -19,4 +20,32 @@ hr {
 .boldit {
     text-align: center;
     font-weight: bold;
+}
+
+mat-card.passed {
+    background-color: #B22222 !important;
+    cursor: pointer;
+}
+
+.recup-finished {
+    position: absolute;
+    right: 6px;
+    bottom: 22px;
+    transform: rotate(-15deg);
+}
+
+.recup-finished button {
+    padding: 14px;
+    background-color: #607d8b;
+    border: aliceblue;
+    border-radius: 11px;
+    color: black;
+    text-transform: uppercase;
+}
+
+.disabledIT {
+    opacity: 0.3;
+}
+.disabledIT:hover {
+    cursor: not-allowed;
 }

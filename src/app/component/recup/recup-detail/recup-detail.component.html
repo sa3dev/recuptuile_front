@@ -1,8 +1,7 @@
-{{ detailItem | json}}
-
 <div class="detail">
+
     <mat-card>
-        <p>numero réference: {{ detailItem.id}}</p>
+        <p>Numéro référence: {{ detailItem.id}}</p>
 
         <div class="recap-space-time">
             <span>Supérficie: {{  detailItem.superfices ? detailItem.superfices + ' m2' : '' }}</span>
@@ -10,7 +9,7 @@
         </div>
 
         <div class="gmap">
-            
+            <!-- TODO implement component visualisation ou gmap classque dans un premier temp pk pas ? -->
         </div>
     </mat-card>
 

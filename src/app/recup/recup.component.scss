@@ -2,15 +2,20 @@
 
     display: flex;
     justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
 
     button {
-        color: grey;
+        background-color: #3b5998;
         padding: 18px;
+        font-family: 'Lato';
+        font-size: 18px;
+        color: white;
     }
 
     button.active{
-        color :black;
-        background-color: grey;
+        color :white;
+        background-color: #1A1D24;
     }
 
 }
