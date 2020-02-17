@@ -31,7 +31,7 @@ export class NewRecupComponent implements OnInit {
     this.snackBar.open(message, action , {
       duration: this.durationInSeconds * 1000,
       verticalPosition: 'top',
-      panelClass: ['test']
+      panelClass: ['snackB']
     });
   }
 

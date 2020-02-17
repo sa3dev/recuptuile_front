@@ -1,8 +1,14 @@
 .newRecup {
-    width: 80%; 
+    width: 70%;
     margin: 0 auto;
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid;
+    border-radius: 5px;
 }
-
+.newRecup h3 {
+    text-align: center;
+}
 form {
     display: flex;
     flex-direction: column;
@@ -24,12 +30,28 @@ input , button{
     padding: 0 20px;
 }
 
-::ng-deep.test {
-  background-color: #164152 !important;
-  color: white !important;
+.adress-input {
+    margin: 0px 20px;
 }
 
-::ng-deep.test button {
-  background-color: rgb(101, 193, 172) !important;
-  color: white !important;
-} 
+::ng-deep.snackB {
+    padding: 20px !important;
+    background-color: #164152 !important;
+    color: white !important;
+}
+
+::ng-deep.snackB button {
+    background-color: rgb(101, 193, 172) !important;
+    color: white !important;
+}
+
+
+@media screen and ( max-width: 600px) {
+    .fifty-fifty {
+        display: contents;
+    }
+
+    .fifty-fifty mat-form-field {
+        width: auto;
+    }
+}
