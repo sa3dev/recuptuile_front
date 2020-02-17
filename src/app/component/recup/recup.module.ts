@@ -7,6 +7,12 @@ import { AllRecupComponent } from './all-recup/all-recup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecupDetailComponent } from './recup-detail/recup-detail.component';
 
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -14,8 +20,17 @@ import { RecupDetailComponent } from './recup-detail/recup-detail.component';
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatSnackBarModule
   ],
-  exports: [NewRecupComponent, HowItWorkComponent, AllRecupComponent]
+  exports: [NewRecupComponent, HowItWorkComponent, AllRecupComponent],
+  providers: [
+    MatDatepickerModule
+  ]
 })
 export class RecupModule { }

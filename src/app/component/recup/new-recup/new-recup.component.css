@@ -3,11 +3,33 @@
     margin: 0 auto;
 }
 
+form {
+    display: flex;
+    flex-direction: column;
+}
+
 input , button{
     padding: 10px;
     margin: 10px;
 }
 
-button {
-    
+.fifty-fifty {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
 }
+
+.fifty-fifty mat-form-field {
+    width: 100%;
+    padding: 0 20px;
+}
+
+::ng-deep.test {
+  background-color: #164152 !important;
+  color: white !important;
+}
+
+::ng-deep.test button {
+  background-color: rgb(101, 193, 172) !important;
+  color: white !important;
+} 

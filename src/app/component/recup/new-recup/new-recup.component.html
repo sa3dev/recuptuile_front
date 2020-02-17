@@ -1,23 +1,27 @@
 <div class="newRecup" >
     <h3>Nouvelle demande</h3>
 
-    <form formGroup="newRecupForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="newRecupForm" (ngSubmit)="onSubmit()">
       
-        <input 
-        type="text" 
-        placeholder="adresse" 
-        formControlName="adress">
-      
-        <input 
-        type="text" 
-        placeholder="number of m2" 
-        formControlName="superfices">
-      
-        <input 
-        type="text" 
-        placeholder="date"
-        formControlName="dateofpassage">
+      <mat-form-field>
+        <input matInput type="text"  formControlName="adress"
+        placeholder="ex: 13 rue de la paix" required>
+      </mat-form-field>
 
-      <button >Valider</button>
+      <div class="fifty-fifty">
+        <mat-form-field>
+          <input matInput type="text"  placeholder="number of m2"  formControlName="superfices" 
+          placeholder="ex: 50 m2" required>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Date de passage"
+          formControlName="dateofpassage" [matDatepicker]="picker" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+
+      <button type="submit">Valider</button>
     </form>
 </div>
