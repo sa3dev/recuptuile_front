@@ -1,5 +1,7 @@
 
-<form [formGroup]="registerFormGroup" class="register_form" (ngSubmit)="onSubmit()">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<form *ngIf="!isLoading" [formGroup]="registerFormGroup" class="register_form" (ngSubmit)="onSubmit()">
 
   <mat-form-field class="register_full_width">
     <input 
@@ -35,6 +37,7 @@
     <button 
         class="register_button primary_button" 
         mat-flat-button type="submit"
+         color="primary"
         [disabled]="!registerFormGroup.valid">JE M'INSCRIS</button>
   </div>
 

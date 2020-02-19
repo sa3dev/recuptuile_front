@@ -1,6 +1,7 @@
 
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 
-<form [formGroup]="loginForm" class="login_form" (ngSubmit)="onSubmit()">
+<form *ngIf="!isLoading" [formGroup]="loginForm" class="login_form" (ngSubmit)="onSubmit()">
 
   <mat-form-field class="login_full_width">
     <input matInput type="email" formControlName="email" placeholder="EMAIL" required>
@@ -10,7 +11,7 @@
     <input matInput type="password" formControlName="password" placeholder="MOT DE PASSE" required>
   </mat-form-field>
 
-    <button mat-flat-button class="login_button primary_button" type="submit" [disabled]="!loginForm.valid">
+    <button mat-flat-button class="login_button primary_button" color="primary" type="submit" [disabled]="!loginForm.valid">
       JE ME CONNECTE
     </button>
 </form>

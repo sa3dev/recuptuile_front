@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatCheckboxModule, MatButtonModule, MatTabsModule } from '@angular/material';
+import { MatCheckboxModule, MatButtonModule, MatTabsModule, MatProgressSpinnerModule } from '@angular/material';
 
 
 
@@ -26,7 +26,8 @@ import { MatCheckboxModule, MatButtonModule, MatTabsModule } from '@angular/mate
     MatButtonModule,
     MatTabsModule,
     MatDialogModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     AuthComponent, LoginComponent, RegisterComponent

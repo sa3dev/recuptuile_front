@@ -8,7 +8,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
+  isLoading = false;
   registerFormGroup: FormGroup;
 
   constructor(private snackBar: MatSnackBar) {
@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
     if (this.registerFormGroup.valid) {
+      this.isLoading = true;
 
       if (this.inputValue('password') === this.inputValue('confirmPassword')) {
 
@@ -37,6 +38,16 @@ export class RegisterComponent implements OnInit {
 
         console.log('Objet to send ');
         console.log(newObj);
+
+        setTimeout(() => {
+          this.isLoading = false;
+          this.snackBar.open('Simulation de connection OK ! ', 'Fermer', {
+            duration: 2500,
+            verticalPosition: 'top',
+            panelClass: ['snackB']
+          });
+          this.registerFormGroup.reset();
+        }, 1500);
 
       } else {
         this.snackBar.open('Les mots de passe ne correspondent pas ', 'Retry', {
