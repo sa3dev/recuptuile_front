@@ -1,0 +1,41 @@
+
+<form [formGroup]="registerFormGroup" class="register_form" (ngSubmit)="onSubmit()">
+
+  <mat-form-field class="register_full_width">
+    <input 
+        matInput type="text" formControlName="firstname" 
+        placeholder="PRÉNOM" required>
+  </mat-form-field>
+
+  <mat-form-field class="register_full_width">
+    <input
+        matInput type="text" formControlName="lastname" 
+        placeholder="NOM" required>
+  </mat-form-field>
+
+  <mat-form-field class="register_full_width">
+    <input 
+        matInput type="email" formControlName="email" 
+        placeholder="EMAIL" required>
+  </mat-form-field>
+
+  <mat-form-field class="register_full_width">
+    <input 
+        matInput type="password" formControlName="password" 
+        placeholder="MOT DE PASSE" required>
+  </mat-form-field>
+
+  <mat-form-field class="register_full_width">
+    <input 
+        matInput type="password" formControlName="confirmPassword" 
+        placeholder="CONFIRMER LE MOT DE PASSE" required>
+  </mat-form-field>
+
+  <div class="register_full_width center">
+    <button 
+        class="register_button primary_button" 
+        mat-flat-button type="submit"
+        [disabled]="!registerFormGroup.valid">JE M'INSCRIS</button>
+  </div>
+
+</form>

@@ -19,8 +19,8 @@ import { RecupModule } from './component/recup/recup.module';
 
 
 import { RecupComponent } from './recup/recup.component';
-import { AllRecupComponent } from './component/recup/all-recup/all-recup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AuthModule } from './component/auth/auth.module';
 
 
 @NgModule({
@@ -45,7 +45,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ContactModule,
     RecupModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]

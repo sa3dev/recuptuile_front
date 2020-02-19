@@ -1,0 +1,15 @@
+<div class="login_background">
+  <div class="login">
+    <mat-tab-group mat-align-tabs="center" [selectedIndex]="0" (selectedIndexChange)="onTabChanged($event)">
+
+      <mat-tab label="CONNEXION" class="connexion">
+        <app-login></app-login>
+      </mat-tab>
+
+      <mat-tab label="INSCRIPTION" class="register">
+        <app-register></app-register>
+      </mat-tab>
+    </mat-tab-group>
+
+  </div>
+</div>
