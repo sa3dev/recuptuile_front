@@ -4,15 +4,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LocalStorageService } from './local-storage.service';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, of, Observable, Subject } from 'rxjs';
-import { UserCredential, User } from '../models/user.model';
+import { UserCredential, User, UserRegister } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private static API =  environment.apiUrl;
-  private static LOGIN = '/users/login';
+  private static API = environment.apiUrl + '/users';
+  private static LOGIN = '/login';
+  private static REGISTER = '/register';
+
   private userSubject = new BehaviorSubject<any>(null);
 
   isUserLoggedIn = new Subject<boolean>();
@@ -26,7 +28,7 @@ export class AuthService {
     private loclStorage: LocalStorageService
     ) {}
 
-  login(data: any) {
+  login(data: UserCredential) {
     if (this.userSubject.getValue() === null) {
       return this.http.post(
         AuthService.API + AuthService.LOGIN,
@@ -37,7 +39,6 @@ export class AuthService {
           this.loclStorage.store('userToken', tokenCreated);
           this.userSubject.next(tokenCreated);
           this.isUserLoggedIn.next(true);
-
           return tokenCreated;
         })
       );
@@ -46,8 +47,19 @@ export class AuthService {
     }
   }
 
-  register() {
-    return null;
+  register(data: UserRegister) {
+    return this.http.post(
+      AuthService.API + AuthService.REGISTER,
+      data,
+      this.httpsOptions
+    ).pipe(
+      map((userToken) => {
+        this.loclStorage.store('userToken', userToken);
+        this.userSubject.next(userToken);
+        this.isUserLoggedIn.next(true);
+        return userToken;
+      })
+    );
   }
 
   logout() {

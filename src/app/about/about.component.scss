@@ -1,0 +1,25 @@
+section {
+    div.main-block {
+
+        width: 90%;
+        margin: auto;
+
+        h2{
+            text-align: center;
+        }
+
+        .block-image {
+            display: flex;
+            padding: 20px; 
+            
+            p {
+                align-self: center;
+                width: 60%;
+                padding: 20px;
+            }
+            img {
+                width: 40%;
+            }
+        }
+    }
+}
