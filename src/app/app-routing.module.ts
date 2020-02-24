@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { RecupComponent } from './recup/recup.component';
@@ -8,6 +8,7 @@ import { NewRecupComponent } from './component/recup/new-recup/new-recup.compone
 import { HowItWorkComponent } from './component/recup/how-it-work/how-it-work.component';
 import { RecupDetailComponent } from './component/recup/recup-detail/recup-detail.component';
 import { AuthComponent } from './component/auth/auth.component';
+import { AuthGuard } from './guard/auth.guard';
 
 
 const routes: Routes = [
@@ -16,13 +17,18 @@ const routes: Routes = [
   { path: 'login', component: AuthComponent },
   // { path: 'contact' , component: ContactComponent },
 
-  { path: 'recup' , component: RecupComponent , children: [
-    { path: '', redirectTo: 'all', pathMatch: 'full' },
-    { path: 'all', component: AllRecupComponent},
-    { path: 'new-recup' , component: NewRecupComponent },
-    { path: 'how-it-work', component: HowItWorkComponent },
-    { path: 'detail/:id', component: RecupDetailComponent },
-  ]}
+  {
+    path: 'recup' , component: RecupComponent ,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: 'all', pathMatch: 'full' },
+      { path: 'all', component: AllRecupComponent},
+      { path: 'new-recup' , component: NewRecupComponent },
+      { path: 'how-it-work', component: HowItWorkComponent },
+      { path: 'detail/:id', component: RecupDetailComponent },
+    ]
+  },
+  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

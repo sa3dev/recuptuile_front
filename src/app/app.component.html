@@ -6,6 +6,9 @@
       <a mat-list-item routerLink="">Home</a>
       <a mat-list-item routerLink="/recup">Récuperations</a>
       <a mat-list-item routerLink="/about">A propos</a>
+      <a *ngIf="userLogged" mat-list-item routerLink="/admin">
+        Mon compte
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -22,6 +25,7 @@
       <button mat-flat-button color="warn" *ngIf="userLogged" (click)="logout()">
         Deconnection
       </button>
+
     </mat-nav-list>
     </mat-toolbar>
     <!-- Add Content Here -->
