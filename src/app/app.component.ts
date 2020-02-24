@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,7 +12,7 @@ import { map, shareReplay } from 'rxjs/operators';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'recaptuile';
+  userLogged;
 
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -19,5 +21,19 @@ export class AppComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) { }
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private authService: AuthService,
+    private router: Router
+    ) {
+    // subject isUserLoggedIn ?
+    this.authService.isUserLoggedIn.subscribe(res => {
+      this.userLogged = res;
+    });
+  }
+
+  logout() {
+    this.router.navigate(['']);
+    this.authService.logout();
+  }
 }

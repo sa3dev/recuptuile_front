@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -7,14 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AuthComponent implements OnInit {
 
-  constructor() { }
+  userLogged: boolean;
+
+  constructor() {}
 
   ngOnInit() {
   }
 
 
   onTabChanged(event) {
-    console.log(event);
+    // console.log(event);
   }
 
 }
