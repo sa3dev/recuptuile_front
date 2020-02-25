@@ -1,22 +1,22 @@
 <div class="login_background">
   <div class="login">
-    <mat-tab-group mat-align-tabs="center" [selectedIndex]="0" (selectedIndexChange)="onTabChanged($event)">
 
-      <mat-tab label="CONNEXION" class="connexion" *ngIf="!showPass">
 
+
+    <mat-tab-group *ngIf="showPass === false" mat-align-tabs="center" [selectedIndex]="0"
+      (selectedIndexChange)="onTabChanged($event)">
+      
+      <mat-tab label="CONNEXION" class="connexion" >
         <app-login (openForgottenpass)="showPassTab()"></app-login>
       </mat-tab>
-
-      <mat-tab label="INSCRIPTION" class="register" *ngIf="!showPass">
+      
+      <mat-tab label="INSCRIPTION" class="register" >
         <app-register></app-register>
       </mat-tab>
-
-
-
-      <mat-tab label="MOT DE PASSE OUBLIER" *ngIf="showPass">
-        <app-password-forgotten (closePassForgotten)="showPass = !showPass"></app-password-forgotten>
-      </mat-tab>
+      
     </mat-tab-group>
+          
+    <app-password-forgotten *ngIf="showPass === true" (closePassForgotten)="showPass = false"></app-password-forgotten>
 
   </div>
 </div>

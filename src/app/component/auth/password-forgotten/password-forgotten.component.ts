@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-password-forgotten',
@@ -16,11 +17,16 @@ export class PasswordForgottenComponent implements OnInit {
     private authService: AuthService
   ) {
     this.passFormGroup = new FormGroup({
-      emailPassForgotten: new FormControl('' , Validators.required),
+      emailPassForgotten: new FormControl(''),
     })
   }
 
+
   ngOnInit() {
+  }
+
+  onReturn() {
+    this.closePassForgotten.emit();
   }
 
   onSubmit() {
@@ -30,10 +36,11 @@ export class PasswordForgottenComponent implements OnInit {
 
       // this.authService.sendMailForPassword().subscribe(ok => {
       // });
-
-    } else { 
-
+      setTimeout(() => {
+        this.closePassForgotten.emit();
+      }, 600);
     }
+
   }
 
 }

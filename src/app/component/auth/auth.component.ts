@@ -13,6 +13,7 @@ export class AuthComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
+    this.showPass = false;
   }
 
 

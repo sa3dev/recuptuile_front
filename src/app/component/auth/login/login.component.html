@@ -3,8 +3,8 @@
 
 <form *ngIf="!isLoading" [formGroup]="loginForm" class="login_form" (ngSubmit)="onSubmit()">
   <p>
-    name: test@gmail.com
-    password: test
+    name: <b> test@gmail.com </b> <br>
+    password: <b> 1234 </b>
   </p>
   <mat-form-field class="login_full_width">
     <input matInput type="email" formControlName="email" placeholder="EMAIL" required>
@@ -16,11 +16,11 @@
 
   <div class="button-actions">
 
-    <button mat-flat-button class="login_button primary_button" color="primary" type="submit" [disabled]="!loginForm.valid">
+    <button mat-flat-button class="" color="primary" type="submit" [disabled]="!loginForm.valid">
       JE ME CONNECTE
     </button>
     
-    <button mat-flat-button class="login_button primary_button" 
+    <button mat-flat-button class="" 
         color="primary" type="button" (click)="openForgottenpass.emit(true)">
       Mot de passe oublié ?
     </button>
