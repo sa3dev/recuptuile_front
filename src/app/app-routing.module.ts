@@ -10,6 +10,7 @@ import { RecupDetailComponent } from './component/recup/recup-detail/recup-detai
 import { AuthComponent } from './component/auth/auth.component';
 import { AuthGuard } from './guard/auth.guard';
 import { MyprofilComponent } from './component/myprofil/myprofil.component';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,9 @@ const routes: Routes = [
       { path: 'how-it-work', component: HowItWorkComponent },
       { path: 'detail/:id', component: RecupDetailComponent },
     ]
+  },
+  {
+    path: 'auth/reset-password', component: ResetPasswordComponent
   },
   {
     path: 'myprofil', component: MyprofilComponent

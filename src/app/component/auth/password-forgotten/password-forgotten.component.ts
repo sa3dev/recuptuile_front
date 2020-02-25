@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl } from '@angular/forms';
 import { AuthService } from '../../../services/auth.service';
-import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-password-forgotten',
@@ -18,7 +17,7 @@ export class PasswordForgottenComponent implements OnInit {
   ) {
     this.passFormGroup = new FormGroup({
       emailPassForgotten: new FormControl(''),
-    })
+    });
   }
 
 
@@ -32,10 +31,16 @@ export class PasswordForgottenComponent implements OnInit {
   onSubmit() {
     if (this.passFormGroup.valid) {
 
-      const obj = this.passFormGroup.get('emailPassForgotten').value;
+      const email = this.passFormGroup.get('emailPassForgotten').value;
+      console.log(email);
 
-      // this.authService.sendMailForPassword().subscribe(ok => {
-      // });
+      this.authService.onForgottenPassword( email ).subscribe(ok => {
+        console.log('IN SUBSCRIBEE ');
+        console.log(ok);
+      },
+      (err) => {
+        console.log(err);
+      });
       setTimeout(() => {
         this.closePassForgotten.emit();
       }, 600);

@@ -16,6 +16,8 @@ export class AuthService {
   private static REGISTER = '/register';
   private static ME = '/me';
   private static CHANGE_PASSWORD = '/changepassword';
+  private static PASS_FORGOTTEN = '/forgottenPassword';
+  private static RESET_PASS_FORGOTTEN = '/reset-password-forgotten';
 
 
   private userSubject = new BehaviorSubject<any>(null);
@@ -113,6 +115,28 @@ export class AuthService {
     } else {
      console.log('token not valid');
     }
+  }
+
+  onForgottenPassword(email: string) {
+    return this.http.post(
+      AuthService.API + AuthService.PASS_FORGOTTEN,
+      {
+        emailForgottenpassword: email
+      },
+      this.httpsOptions,
+    );
+  }
+
+  onResetPaswordAfterRedirection( password: string , token: string ) {
+    return this.http.post(
+      AuthService.API + AuthService.RESET_PASS_FORGOTTEN,
+      {
+        password
+      },
+      {
+        headers: new HttpHeaders().set('Authorization' , token)
+      }
+    );
   }
 
 }

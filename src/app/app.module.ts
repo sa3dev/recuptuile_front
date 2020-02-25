@@ -23,23 +23,31 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './component/auth/auth.module';
 import { AccountCredentialDetailModule } from './component/account-credential-detail/account-credential-detail.module';
 import { MyprofilModule } from './component/myprofil/myprofil.module';
+import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RecupComponent,
+    ResetPasswordComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     LayoutModule,
+
     MatToolbarModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    MatInputModule,
+
     FormsCustomModule,
     HomeModule,
     AboutModule,
