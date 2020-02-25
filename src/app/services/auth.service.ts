@@ -72,7 +72,7 @@ export class AuthService {
   /**
    * Is user connected and token in storage ?
    */
-  isUserTokenInStorage() {
+   isUserTokenInStorage() {
     const user = localStorage.getItem('userToken');
     if (user ) {
       this.userSubject.next(user);
@@ -88,6 +88,7 @@ export class AuthService {
    */
   getMyProfil() {
     const token = this.loclStorage.retrieve('userToken');
+    console.log(token);
     if (token) {
       return this.http.get(
         AuthService.API + AuthService.ME,

@@ -44,9 +44,10 @@ export class ResetPasswordComponent implements OnInit {
       if ( newPassword === confirmPassword ) {
         this.authService.onResetPaswordAfterRedirection(newPassword , this.token).subscribe(
           (usertoken) => {
-            localStorage.setItem('userToken' , JSON.stringify(usertoken));
-            this.authService.isUserTokenInStorage();
-            this.route.navigate(['/recup']);
+
+            // localStorage.setItem('userToken' , JSON.stringify(usertoken));
+            // this.authService.isUserTokenInStorage();
+            this.route.navigate(['login']);
         });
       } else {
         this.snackbar.open(
