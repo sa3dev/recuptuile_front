@@ -11,11 +11,16 @@ import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule, MatButtonModule, MatTabsModule, MatProgressSpinnerModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
+import { PasswordForgottenComponent } from './password-forgotten/password-forgotten.component';
 
 
 
 @NgModule({
-  declarations: [AuthComponent , LoginComponent , RegisterComponent],
+  declarations: [
+    AuthComponent ,
+    LoginComponent ,
+    RegisterComponent,
+    PasswordForgottenComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -32,7 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   exports: [
-    AuthComponent, LoginComponent, RegisterComponent
+    AuthComponent,
+    LoginComponent,
+    RegisterComponent ,
+    PasswordForgottenComponent
   ]
 })
 export class AuthModule { }

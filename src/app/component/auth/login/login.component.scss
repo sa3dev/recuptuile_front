@@ -18,6 +18,11 @@
 }
 
 mat-spinner {
-    display: block;
-    margin: 100px auto;
+  display: block;
+  margin: 100px auto;
+}
+
+.button-actions {
+  display: flex;
+  justify-content: space-between;
 }

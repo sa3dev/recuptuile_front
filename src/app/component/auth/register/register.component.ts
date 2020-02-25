@@ -57,7 +57,6 @@ export class RegisterComponent implements OnInit {
           err => {
             console.log(err);
             this.isLoading = false;
-            // this.registerFormGroup.reset();
             this.snackBar.open('Il y a eu une erreur dans l\'inscriptions, Réssayer', 'Fermer', {
               duration: 2500,
               verticalPosition: 'top',

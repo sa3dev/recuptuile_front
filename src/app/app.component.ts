@@ -26,10 +26,12 @@ export class AppComponent {
     private authService: AuthService,
     private router: Router
     ) {
-    // subject isUserLoggedIn ?
-    this.authService.isUserLoggedIn.subscribe(res => {
-      this.userLogged = res;
-    });
+      // subject isUserLoggedIn ?
+      this.authService.isUserLoggedIn.subscribe(res => {
+        this.userLogged = res;
+      });
+
+      this.authService.isUserTokenInStorage();
   }
 
   logout() {

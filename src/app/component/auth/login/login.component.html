@@ -2,7 +2,10 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
 <form *ngIf="!isLoading" [formGroup]="loginForm" class="login_form" (ngSubmit)="onSubmit()">
-
+  <p>
+    name: test@gmail.com
+    password: test
+  </p>
   <mat-form-field class="login_full_width">
     <input matInput type="email" formControlName="email" placeholder="EMAIL" required>
   </mat-form-field>
@@ -11,7 +14,15 @@
     <input matInput type="password" formControlName="password" placeholder="MOT DE PASSE" required>
   </mat-form-field>
 
+  <div class="button-actions">
+
     <button mat-flat-button class="login_button primary_button" color="primary" type="submit" [disabled]="!loginForm.valid">
       JE ME CONNECTE
     </button>
+    
+    <button mat-flat-button class="login_button primary_button" 
+        color="primary" type="button" (click)="openForgottenpass.emit(true)">
+      Mot de passe oublié ?
+    </button>
+  </div>
 </form>

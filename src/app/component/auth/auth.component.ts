@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
 export class AuthComponent implements OnInit {
 
   userLogged: boolean;
-
+  showPass: boolean;
   constructor() {}
 
   ngOnInit() {
@@ -18,6 +18,10 @@ export class AuthComponent implements OnInit {
 
   onTabChanged(event) {
     // console.log(event);
+  }
+
+  showPassTab(event) {
+    this.showPass = true;
   }
 
 }

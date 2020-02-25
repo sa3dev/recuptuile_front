@@ -21,13 +21,14 @@ import { RecupModule } from './component/recup/recup.module';
 import { RecupComponent } from './recup/recup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './component/auth/auth.module';
+import { AccountCredentialDetailModule } from './component/account-credential-detail/account-credential-detail.module';
+import { MyprofilModule } from './component/myprofil/myprofil.module';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RecupComponent,
-    // AllRecupComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +47,9 @@ import { AuthModule } from './component/auth/auth.module';
     RecupModule,
     FormsModule,
     ReactiveFormsModule,
-    AuthModule
+    AuthModule,
+    AccountCredentialDetailModule,
+    MyprofilModule
   ],
   providers: [],
   bootstrap: [AppComponent]

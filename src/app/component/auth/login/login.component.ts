@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   loginForm: FormGroup;
   @Output() public ongLogin = new EventEmitter<FormGroup>();
+  @Output() openForgottenpass = new EventEmitter<boolean>();
 
   constructor(
     private snackBar: MatSnackBar,

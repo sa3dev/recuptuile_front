@@ -1,0 +1,6 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div class="account-perso" *ngIf="!isLoading">
+    <h3>Info personnel</h3>
+    <app-account-credential-detail [user]="user"></app-account-credential-detail>
+</div>

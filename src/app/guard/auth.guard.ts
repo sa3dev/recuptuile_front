@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { LocalStorageService } from '../services/local-storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthGuard implements CanActivate {
 
   constructor(
     private authService: AuthService,
+    private storageService: LocalStorageService,
     private router: Router ) {
 
   }
@@ -19,10 +21,19 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    this.authService.isUserLoggedIn.subscribe(res => {
-      this.pass = res;
-    });
-    return (this.pass === true ) ? true : this.router.navigate(['']);
+    // this.authService.isUserLoggedIn.subscribe(res => {
+    //   this.pass = res;
+    //   console.log(this.pass);
+    // });
+    // return (this.pass === true ) ? true : this.router.navigate(['']);
+
+    const token = this.storageService.retrieve('userToken');
+    const isConnected = (token !== null && token.length > 0) ? true : false;
+    if (!isConnected) {
+      this.router.navigate(['']);
+      return false;
+    }
+    return true;
   }
 
 }

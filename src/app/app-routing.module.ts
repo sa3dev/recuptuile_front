@@ -9,14 +9,13 @@ import { HowItWorkComponent } from './component/recup/how-it-work/how-it-work.co
 import { RecupDetailComponent } from './component/recup/recup-detail/recup-detail.component';
 import { AuthComponent } from './component/auth/auth.component';
 import { AuthGuard } from './guard/auth.guard';
+import { MyprofilComponent } from './component/myprofil/myprofil.component';
 
 
 const routes: Routes = [
   { path: '' , component: HomeComponent },
   { path: 'about' , component: AboutComponent },
   { path: 'login', component: AuthComponent },
-  // { path: 'contact' , component: ContactComponent },
-
   {
     path: 'recup' , component: RecupComponent ,
     canActivate: [AuthGuard],
@@ -27,6 +26,9 @@ const routes: Routes = [
       { path: 'how-it-work', component: HowItWorkComponent },
       { path: 'detail/:id', component: RecupDetailComponent },
     ]
+  },
+  {
+    path: 'myprofil', component: MyprofilComponent
   },
   { path: '**', redirectTo: '' }
 ];

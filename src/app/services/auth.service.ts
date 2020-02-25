@@ -14,6 +14,9 @@ export class AuthService {
   private static API = environment.apiUrl + '/users';
   private static LOGIN = '/login';
   private static REGISTER = '/register';
+  private static ME = '/me';
+  private static CHANGE_PASSWORD = '/changepassword';
+
 
   private userSubject = new BehaviorSubject<any>(null);
 
@@ -29,7 +32,6 @@ export class AuthService {
     ) {}
 
   login(data: UserCredential) {
-    if (this.userSubject.getValue() === null) {
       return this.http.post(
         AuthService.API + AuthService.LOGIN,
         data,
@@ -42,9 +44,6 @@ export class AuthService {
           return tokenCreated;
         })
       );
-    } else {
-      return this.userSubject;
-    }
   }
 
   register(data: UserRegister) {
@@ -66,6 +65,54 @@ export class AuthService {
     this.loclStorage.deleteStorage('userToken');
     this.userSubject.next(null);
     this.isUserLoggedIn.next(false);
+  }
+
+  /**
+   * Is user connected and token in storage ?
+   */
+  isUserTokenInStorage() {
+    const user = localStorage.getItem('userToken');
+    if (user ) {
+      this.userSubject.next(user);
+      this.isUserLoggedIn.next(true);
+    } else {
+      this.userSubject.next(null);
+      this.isUserLoggedIn.next(false);
+    }
+  }
+
+  /**
+   * Return user profil with name email phone and type
+   */
+  getMyProfil() {
+    const token = this.loclStorage.retrieve('userToken');
+    if (token) {
+      return this.http.get(
+        AuthService.API + AuthService.ME,
+        { headers: new HttpHeaders().set('Authorization' , token)}
+      );
+    } else {
+      console.log('token not valid');
+    }
+  }
+
+  /**
+   *
+   * @param data object with { email , newpassword }
+   */
+  onChangePassword(data: object) {
+    const token = this.loclStorage.retrieve('userToken');
+    if (token) {
+      return this.http.post(
+        AuthService.API + AuthService.CHANGE_PASSWORD,
+        data,
+        {
+          headers: new HttpHeaders().set('Authorization' , token)
+        }
+      );
+    } else {
+     console.log('token not valid');
+    }
   }
 
 }
