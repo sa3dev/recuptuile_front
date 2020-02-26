@@ -1,3 +1,38 @@
-<section>
-    <h1>Titre de mon luc</h1>
-</section>
+<div class="main">
+
+    <section class="header">
+        <div class="imageLogo">
+            <img src="/assets/logo/logorecuptuile.svg" alt="">
+        </div>
+        <h1 class="head-text">On transforme vos tuiles pour une 2e vie ! </h1>
+    </section>
+    
+    <div class="steppers">
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step label="1er étape">
+                <div class="bloc">
+                    <img src="/assets/images/cal3.png" alt="">                    
+                    <p>Renseignez la date des travaux de remplacement de toiture.</p>
+                </div>
+            </mat-step>
+            
+            <mat-step label="2e étape">
+                <div class="bloc">
+                    <p>On passe le jour J récuperer vos tuiles, avant ça on vous apelle pour confirmer le passage.</p>
+                    <img src="/assets/images/camion1.jpg" alt="">
+                </div>
+            </mat-step>
+            
+            <mat-step label="Dérnière étape">
+                <div class="bloc">
+                    <img src="assets/images/ecolo1.jpg" alt="">
+                    <p>
+                        On transforme vos tuiles pour leurs donner une 2eme vie
+                    </p>
+                </div>
+            </mat-step>
+            
+        </mat-horizontal-stepper>
+    </div>
+    
+</div>

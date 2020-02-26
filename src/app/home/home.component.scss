@@ -1,11 +1,48 @@
-section {
-    background: url('https://via.placeholder.com/150');
-    padding: 120px 0;
-    background-size: cover;
-    background-position: center;
+section.header {
+    // background: url('https://via.placeholder.com/250');
+    background-color: #C6D4FF;
+    padding: 50px 0;
+    position: relative;
+}
 
-    h1 {
-        text-align: center;
+.imageLogo {
+    width: 12%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    img {
+        width: 100%;
     }
+}
+h1 {
+    text-align: center;
+}
+
+.head-text {
+    font-size: 24px;
+    color: #307473;
+    font-family: Lato;
+}
+
+.steppers {
+    width: 800px;
+    margin: 70px auto;
+}
+
+::ng-deep .bloc {
+    display: flex;
+    justify-content: space-around;
+    margin: 30px;
     
+    p {
+        padding: 20px;
+        font-size: 23px;
+        text-align: center;
+        align-self: center;
+    }
+
+    img {
+        width: 30%;
+    }
 }

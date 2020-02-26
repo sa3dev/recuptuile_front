@@ -21,6 +21,10 @@ export class MyprofilComponent implements OnInit {
         this.isLoading = false;
         this.user = user;
       }
+    },
+    err =>{
+      console.log('Il ya eu une erreur de type ');
+      console.log(err);
     });
   }
 
