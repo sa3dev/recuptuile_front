@@ -49,6 +49,12 @@ mat-card.passed {
     cursor: not-allowed;
 }
 
+.error {
+    background-color: lightpink;
+    padding: 30px;
+    width: 70%;
+}
+
 @media screen and (max-width: 1000px) {
     mat-card {
       width: 100%;

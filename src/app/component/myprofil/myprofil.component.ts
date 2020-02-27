@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-myprofil',
@@ -11,7 +13,10 @@ export class MyprofilComponent implements OnInit {
   isLoading: boolean;
   user;
 
-  constructor(private authService: AuthService) { }
+  constructor(
+    private authService: AuthService,
+    private snackB: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -22,9 +27,13 @@ export class MyprofilComponent implements OnInit {
         this.user = user;
       }
     },
-    err =>{
-      console.log('Il ya eu une erreur de type ');
-      console.log(err);
+    err => {
+      const snackBar = this.snackB.open('Votre session a expiré veillez vous reconnecter' , 'Fermer');
+
+      snackBar.afterDismissed().subscribe(() => {
+          this.router.navigate(['/login']);
+      });
+
     });
   }
 

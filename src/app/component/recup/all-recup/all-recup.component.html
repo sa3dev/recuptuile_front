@@ -7,7 +7,7 @@
             <p>{{  item.adress }}</p>
             <hr>
             <div class="superficies">
-                <p>Toiture: <span class="boldit">{{ item.superfices ?   item.superfices + ' m2' : 'non-renseigné' }}</span></p>
+                <p>Toiture: <span class="boldit">{{ item.superficies ?   item.superficies + ' m2' : 'non-renseigné' }}</span></p>
                 <!-- Composant dynamique qui chargerais l'espace correspondant a la superficie ' -->
             </div>
             
@@ -25,5 +25,10 @@
         </div>
     </mat-card>
 
+    <div *ngIf="error" class="error">
+        Aucune récuperation existante
+        <hr>
+        Detail: {{ error.error }}
+    </div>
     
 </div>

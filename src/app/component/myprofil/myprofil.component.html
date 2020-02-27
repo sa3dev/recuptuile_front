@@ -1,6 +1,26 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
+
+
 <div class="account-perso" *ngIf="!isLoading">
     <h3>Info personnel</h3>
     <app-account-credential-detail [user]="user"></app-account-credential-detail>
+
+    
+    
+    <div *ngIf="user.role === 'admin'">
+        You are admin congrat!
+    
+        <div>
+            number of user and role for changing role
+        </div>
+
+        <div>
+            number of passage total, passed and futur  
+        </div>
+    
+    </div>
+
+
+
 </div>

@@ -88,7 +88,6 @@ export class AuthService {
    */
   getMyProfil() {
     const token = this.loclStorage.retrieve('userToken');
-    console.log(token);
     if (token) {
       return this.http.get(
         AuthService.API + AuthService.ME,

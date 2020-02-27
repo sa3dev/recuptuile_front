@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { RecupService } from '../../../services/recup.service';
-import { DATA } from '../../../models/recup-data';
-import { RecupModel } from 'src/app/models/recup-model';
+import { PassageService } from '../../../services/passage.service';
+import { filter, tap, find } from 'rxjs/operators';
 
 
 @Component({
@@ -16,15 +15,19 @@ export class RecupDetailComponent implements OnInit {
 
   constructor(
     private activeRoute: ActivatedRoute,
-    private recupService: RecupService) { }
+    private passageService: PassageService) { }
 
-  ngOnInit() {
+    ngOnInit() {
 
     this.activeRoute.params.subscribe(
       data => {
-        this.detailItem = DATA.find(el => {
-          return el.id === data.id;
+        console.log(+data.id);
+
+        this.passageService.getAllPassageOfUser()
+        .subscribe(items => {
+          this.detailItem = items;
         });
+
       }
     );
   }
