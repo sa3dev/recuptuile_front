@@ -9,7 +9,9 @@ import { Observable, of, Subject } from 'rxjs';
 })
 export class PassageService {
 
-  private static API = environment.apiUrl + '/passage';
+  private static API = environment.apiUrl;
+  private static PASSAGE = '/passage';
+  // private static ADRESS = '/adress';
 
   listOfpassage: any[] = [];
   allPassage: Subject<object[]> = new Subject();
@@ -21,8 +23,26 @@ export class PassageService {
     const token = localStorage.getItem('userToken');
     if (token) {
       return this.http.get(
-        PassageService.API ,
+        PassageService.API + PassageService.PASSAGE ,
         { headers: new HttpHeaders().set('Authorization' , token) });
+    }
+  }
+
+  newPassage(data) {
+    const token = localStorage.getItem('userToken');
+
+    console.log(token);
+    console.log(data);
+
+    if (token) {
+      return this.http.post(
+        PassageService.API + PassageService.PASSAGE,
+        { content: data } ,
+        {
+          headers: new HttpHeaders().set('Authorization', token)
+        }
+
+      );
     }
   }
 

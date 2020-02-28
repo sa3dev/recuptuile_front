@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
           phonenumber: `0${this.inputValue('phonenumber')}`,
         };
 
-        console.log(newObj);
+        // console.log(newObj);
 
         this.authService.register(newObj).subscribe((res) => {
 
@@ -55,7 +55,7 @@ export class RegisterComponent implements OnInit {
           this.router.navigate(['/recup']);
         },
           err => {
-            console.log(err);
+            // console.log(err);
             this.isLoading = false;
             this.snackBar.open('Il y a eu une erreur dans l\'inscriptions, Réssayer', 'Fermer', {
               duration: 2500,

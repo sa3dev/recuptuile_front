@@ -18,9 +18,8 @@ export class AllRecupComponent implements OnInit , OnDestroy {
 
   ngOnInit() {
     this.recupSub = this.passageService.getAllPassageOfUser().subscribe(items => {
-      console.log(items);
       this.listRecup = items;
-    } , (err) => {
+    }, (err) => {
       this.error = err;
     });
   }

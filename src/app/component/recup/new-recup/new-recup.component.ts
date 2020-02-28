@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RecupModel } from '../../../models/recup-model';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { PassageService } from '../../../services/passage.service';
 
 @Component({
   selector: 'app-new-recup',
@@ -12,7 +13,7 @@ export class NewRecupComponent implements OnInit {
   durationInSeconds = 20;
   newRecupForm: FormGroup;
 
-  constructor( private  snackBar: MatSnackBar ) {
+  constructor(private snackBar: MatSnackBar, private passageService: PassageService ) {
     this.newRecupForm = new FormGroup({
       adress: new FormControl(''),
       superfices: new FormControl(''),
@@ -44,11 +45,20 @@ export class NewRecupComponent implements OnInit {
 
       const newObjToSend: RecupModel = {
         adress,
-        superfices: space,
-        dateofpassage: dateChosen,
+        superfices: Number(space),
+        dateofpassage: new Date(dateChosen).toLocaleString(),
       };
 
-      console.log('Obj to send api ' + newObjToSend );
+      console.log('Obj to send api ');
+      console.log(newObjToSend );
+
+      this.passageService.newPassage(newObjToSend).subscribe( (obj) => {
+        console.log(obj);
+
+      },
+      err => {
+        console.log(err);
+      });
 
     } else {
       this.openSnackBar('Erreur dans le formulaire' , 'Close');

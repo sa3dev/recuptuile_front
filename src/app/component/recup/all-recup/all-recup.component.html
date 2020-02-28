@@ -30,5 +30,9 @@
         <hr>
         Detail: {{ error.error }}
     </div>
+    <div *ngIf="listRecup.length < 1" class="error all-recup">
+        Aucune récuperation existante
+        <hr>
+    </div>
     
 </div>

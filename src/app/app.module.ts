@@ -26,6 +26,8 @@ import { MyprofilModule } from './component/myprofil/myprofil.module';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './services/auth-interceptor.service';
 
 
 @NgModule({
@@ -59,7 +61,13 @@ import { MatInputModule } from '@angular/material/input';
     AccountCredentialDetailModule,
     MyprofilModule
   ],
-  providers: [],
+  providers: [
+    // {
+    // provide: HTTP_INTERCEPTORS,
+    // useClass: AuthInterceptorService,
+    // multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

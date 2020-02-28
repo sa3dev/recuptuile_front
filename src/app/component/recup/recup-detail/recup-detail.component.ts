@@ -23,13 +23,12 @@ export class RecupDetailComponent implements OnInit {
       data => {
         console.log(+data.id);
 
-        this.passageService.getAllPassageOfUser()
-        .subscribe(items => {
+        this.passageService.getAllPassageOfUser().subscribe(items => {
           this.detailItem = items;
         });
-
       }
     );
+
   }
 
 }
