@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,16 +26,16 @@ import { MyprofilModule } from './component/myprofil/myprofil.module';
 import { ResetPasswordComponent } from './component/reset-password/reset-password.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { AuthInterceptorService } from './services/auth-interceptor.service';
 import { HttpClientModule } from '@angular/common/http';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+// the second parameter 'fr-FR' is optional
+registerLocaleData(localeFr, 'fr-FR');
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    RecupComponent,
-    ResetPasswordComponent,
-  ],
+  declarations: [AppComponent, RecupComponent, ResetPasswordComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -60,15 +60,19 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     AuthModule,
     AccountCredentialDetailModule,
-    MyprofilModule
+    MyprofilModule,
+
   ],
   providers: [
+    {
+      provide: LOCALE_ID, useValue : 'fr-FR'
+    }
     // {
-    // provide: HTTP_INTERCEPTORS,
-    // useClass: AuthInterceptorService,
-    // multi: true
-    // }
+      // provide: HTTP_INTERCEPTORS,
+      // useClass: AuthInterceptorService,
+      // multi: true
+      // }
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

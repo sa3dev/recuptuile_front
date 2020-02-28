@@ -14,10 +14,16 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
-  declarations: [NewRecupComponent, HowItWorkComponent, AllRecupComponent, RecupDetailComponent],
+  declarations: [
+    NewRecupComponent,
+    HowItWorkComponent,
+    AllRecupComponent,
+    RecupDetailComponent
+  ],
   imports: [
     CommonModule,
     FormsModule,
@@ -29,11 +35,12 @@ import { MatButtonModule } from '@angular/material/button';
     MatFormFieldModule,
     MatSnackBarModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    AgmCoreModule.forRoot({
+      apiKey: "AIzaSyBFqj07Fg-88ryWPEvwrbF2fg1d8G0MUec"
+    })
   ],
   exports: [NewRecupComponent, HowItWorkComponent, AllRecupComponent],
-  providers: [
-    MatDatepickerModule
-  ]
+  providers: [MatDatepickerModule]
 })
-export class RecupModule { }
+export class RecupModule {}

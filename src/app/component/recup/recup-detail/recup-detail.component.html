@@ -1,20 +1,51 @@
 <div class="detail">
 
     <mat-card *ngIf=" detailItem">
+         
+        <!-- {{ detailItem | json  }} -->
         <p>Numéro référence: {{ detailItem.id}}</p>
 
         <div class="recap-space-time">
-            <span>Supérficie: {{  detailItem.superficies ? detailItem.superficies + ' m2' : '' }}</span>
-            <span>Date prévu de passage: {{  detailItem.dateofpassage | date}} </span>
+            <span *ngIf="!editmode">
+                <span> Supérficie: {{  detailItem.superficies }} <span> m2</span></span>
+                 <!-- ? detailItem.superficies + ' m2' : '' -->
+                <button (click)='editmode = !editmode'>
+                   <i class="material-icons">
+                     edit
+                   </i>
+                </button>    
+            </span>
+           
+           <span *ngIf="editmode">
+               <input type="text" [(ngModel)]="detailItem.superficies">
+               <button (click)="!editmode = editMode">OK</button>
+           </span> 
+
+           <span *ngIf="!editMode">
+                <span>Date prévu de passage: {{  detailItem.dateofpassage | date:'EEEE, d,MMMM y'  }} </span>
+                <button (click)='editMode = !editMode'>
+                    <i class="material-icons">
+                        edit
+                    </i>
+                </button>
+           </span>           
+           <span *ngIf="editMode">
+               <input *ngIf="editMode" type="text" [(ngModel)]="detailItem.dateofpassage">
+               <button (click)="editMode = !editMode" type="submit">OK</button>
+           </span> 
         </div>
 
         <div class="gmap">
-            <!-- TODO implement component visualisation ou gmap classque dans un premier temp pk pas ? -->
+            <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
         </div>
     </mat-card>
 
     <div *ngIf=" !detailItem">
         Data not fetched yet 
     </div>
+
+    <!-- <div>
+        <button (click)="saveEditedData()">Enregistrer les modifications ?</button>
+    </div> -->
 
 </div>

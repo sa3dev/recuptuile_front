@@ -13,4 +13,16 @@ mat-card {
 .recap-space-time {
     display: flex;
     justify-content: space-around;
+    border: 1px solid lightgrey;
+    padding: 30px;
+}
+
+agm-map {
+    height: 300px;
+}
+
+.recap-space-time button {
+    margin: 0 10px;
+    background-color: transparent;
+    border: none;
 }
