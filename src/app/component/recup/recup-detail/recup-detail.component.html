@@ -1,16 +1,20 @@
 <div class="detail">
 
-    <mat-card>
+    <mat-card *ngIf=" detailItem">
         <p>Numéro référence: {{ detailItem.id}}</p>
 
         <div class="recap-space-time">
-            <span>Supérficie: {{  detailItem.superfices ? detailItem.superfices + ' m2' : '' }}</span>
-            <span>Date prévu de passage: {{  detailItem.dateofpassage }} </span>
+            <span>Supérficie: {{  detailItem.superficies ? detailItem.superficies + ' m2' : '' }}</span>
+            <span>Date prévu de passage: {{  detailItem.dateofpassage | date}} </span>
         </div>
 
         <div class="gmap">
             <!-- TODO implement component visualisation ou gmap classque dans un premier temp pk pas ? -->
         </div>
     </mat-card>
+
+    <div *ngIf=" !detailItem">
+        Data not fetched yet 
+    </div>
 
 </div>

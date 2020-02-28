@@ -4,14 +4,14 @@
         
         <div [ngClass]="{disabledIT: item.isDatePassed === true}">
             <h3> New Récup dispo !</h3>
-            <p>{{  item.adress }}</p>
+            <p>Adresse:  {{  item.adress }}</p>
             <hr>
             <div class="superficies">
                 <p>Toiture: <span class="boldit">{{ item.superficies ?   item.superficies + ' m2' : 'non-renseigné' }}</span></p>
                 <!-- Composant dynamique qui chargerais l'espace correspondant a la superficie ' -->
             </div>
             
-            <p>Date de passage: <span class="boldit">{{ item.dateofpassage }}</span></p>
+            <p>Date de passage: <span class="boldit">{{ item.dateofpassage | date }}</span></p>
             
             <a *ngIf="item.isDatePassed === false" mat-stroked-button color="accent" (click)="navigateplease( item.id )">
                 Détail de récuperation

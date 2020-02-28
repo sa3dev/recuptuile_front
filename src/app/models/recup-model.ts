@@ -1,7 +1,7 @@
 export interface RecupModel {
     id?: string;
     adress: string;
-    superfices: number;
+    superficies: number;
     dateofpassage: string;
     isDatePassed?: boolean;
 }

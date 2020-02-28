@@ -10,7 +10,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule, MatButtonModule, MatTabsModule, MatProgressSpinnerModule } from '@angular/material';
-import { HttpClientModule } from '@angular/common/http';
 import { PasswordForgottenComponent } from './password-forgotten/password-forgotten.component';
 
 
@@ -33,8 +32,7 @@ import { PasswordForgottenComponent } from './password-forgotten/password-forgot
     MatTabsModule,
     MatDialogModule,
     MatCheckboxModule,
-    MatProgressSpinnerModule,
-    HttpClientModule
+    MatProgressSpinnerModule
   ],
   exports: [
     AuthComponent,

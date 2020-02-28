@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { map } from 'rxjs/operators';
-import { Observable, of, Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { Observable, of, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,9 @@ export class PassageService {
 
   private static API = environment.apiUrl;
   private static PASSAGE = '/passage';
-  // private static ADRESS = '/adress';
 
   listOfpassage: any[] = [];
-  allPassage: Subject<object[]> = new Subject();
+  allPassage: BehaviorSubject<any[]> = new BehaviorSubject(null);
 
 
   constructor(private http: HttpClient) { }
@@ -22,9 +21,15 @@ export class PassageService {
   getAllPassageOfUser() {
     const token = localStorage.getItem('userToken');
     if (token) {
-      return this.http.get(
+      if (this.allPassage.getValue() !== null) {
+        return this.allPassage;
+      } else {
+        return this.http.get(
         PassageService.API + PassageService.PASSAGE ,
-        { headers: new HttpHeaders().set('Authorization' , token) });
+        { headers: new HttpHeaders().set('Authorization' , token) }).pipe(
+          tap((items: any[]) => this.allPassage.next(items))
+        );
+      }
     }
   }
 
@@ -37,7 +42,7 @@ export class PassageService {
     if (token) {
       return this.http.post(
         PassageService.API + PassageService.PASSAGE,
-        { content: data } ,
+        data,
         {
           headers: new HttpHeaders().set('Authorization', token)
         }

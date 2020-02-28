@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { RecupModel } from '../../../models/recup-model';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PassageService } from '../../../services/passage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-recup',
@@ -10,22 +11,22 @@ import { PassageService } from '../../../services/passage.service';
   styleUrls: ['./new-recup.component.css']
 })
 export class NewRecupComponent implements OnInit {
-  durationInSeconds = 20;
+  durationInSeconds = 2;
   newRecupForm: FormGroup;
 
-  constructor(private snackBar: MatSnackBar, private passageService: PassageService ) {
+  constructor(
+    private snackBar: MatSnackBar,
+    private passageService: PassageService,
+    private router: Router    
+    ) {
     this.newRecupForm = new FormGroup({
       adress: new FormControl(''),
-      superfices: new FormControl(''),
-      dateofpassage: new FormControl('' )
+      superficies: new FormControl(''),
+      dateofpassage: new FormControl('')
     });
    }
 
   ngOnInit() {
-  }
-
-  getValueForm(stringVal) {
-    return this.newRecupForm.get(`${stringVal}`).value;
   }
 
   openSnackBar(message: string , action: string)  {
@@ -39,24 +40,23 @@ export class NewRecupComponent implements OnInit {
   onSubmit() {
     if (this.newRecupForm.valid) {
 
-      const adress = this.getValueForm('adress');
-      const space = this.getValueForm('superfices');
-      const dateChosen = this.getValueForm('dateofpassage');
+      this.passageService.newPassage(this.newRecupForm.value).subscribe( (obj) => {
 
-      const newObjToSend: RecupModel = {
-        adress,
-        superfices: Number(space),
-        dateofpassage: new Date(dateChosen).toLocaleString(),
-      };
+        // this.openSnackBar('Ajout de votre demande de récuperation, Merci !', 'Fermer');
 
-      console.log('Obj to send api ');
-      console.log(newObjToSend );
+        const snackBar = this.snackBar.open('Ajout de votre demande de récuperation, Merci !', 'Fermer', {
+          duration: this.durationInSeconds * 1000,
+          verticalPosition: 'top',
+          panelClass: ['snackB']
+        });
 
-      this.passageService.newPassage(newObjToSend).subscribe( (obj) => {
-        console.log(obj);
+        snackBar.afterDismissed().subscribe(ok => {
+          this.router.navigate(['/recup/all']);
+        });
 
       },
       err => {
+        console.log('Nope');
         console.log(err);
       });
 

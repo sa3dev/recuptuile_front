@@ -21,7 +21,7 @@ export class MyprofilComponent implements OnInit {
   ngOnInit() {
     this.isLoading = true;
     this.authService.getMyProfil().subscribe(user => {
-      console.log(user);
+      // console.log(user);
       if (user) {
         this.isLoading = false;
         this.user = user;
@@ -31,6 +31,7 @@ export class MyprofilComponent implements OnInit {
       const snackBar = this.snackB.open('Votre session a expiré veillez vous reconnecter' , 'Fermer');
 
       snackBar.afterDismissed().subscribe(() => {
+          this.authService.logout();
           this.router.navigate(['/login']);
       });
 
