@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   isLoading = false;
   loginForm: FormGroup;
-  @Output() public ongLogin = new EventEmitter<FormGroup>();
+  @Output() userLog = new EventEmitter<any>();
   @Output() openForgottenpass = new EventEmitter<boolean>();
 
   constructor(
@@ -42,11 +42,11 @@ export class LoginComponent implements OnInit {
 
         this.isLoading = false;
         this.loginForm.reset();
+        this.userLog.emit(res);
 
-        this.router.navigate(['/recup']);
       },
       err => {
-        console.log(err);
+        // console.log(err);
         this.isLoading = false;
         this.loginForm.reset();
         this.snackBar.open('Il y a eu une erreur dans la connexion, réssayer', 'Fermer', {

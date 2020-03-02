@@ -7,11 +7,11 @@
       (selectedIndexChange)="onTabChanged($event)">
       
       <mat-tab label="CONNEXION" class="connexion" >
-        <app-login (openForgottenpass)="showPassTab()"></app-login>
+        <app-login (openForgottenpass)="showPassTab()" (userLog)="onUserAction($event)"></app-login>
       </mat-tab>
       
       <mat-tab label="INSCRIPTION" class="register" >
-        <app-register></app-register>
+        <app-register (userRegister)="onUserAction(event)"></app-register>
       </mat-tab>
       
     </mat-tab-group>

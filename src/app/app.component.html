@@ -3,9 +3,18 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
+      <!-- <a > 
+        {{ userLogged | json }}
+        {{ userRole | json }}
+      </a> -->
       <a mat-list-item routerLink="">Home</a>
-      <a mat-list-item routerLink="/recup">Récuperations</a>
+      <a *ngIf="userLogged && userRole === 'user'" mat-list-item routerLink="/recup">Récuperations</a>
+      <a *ngIf="userLogged && userRole === 'livreur'" mat-list-item routerLink="/livraisons">Mes livraisons</a>
+
+      <a *ngIf="userRole === 'admin'" mat-list-item routerLink="/admin">Admin</a>
+
       <a mat-list-item routerLink="/about">A propos</a>
+
       <a *ngIf="userLogged" mat-list-item routerLink="/myprofil">
         Mon compte
       </a>

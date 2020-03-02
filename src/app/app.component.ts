@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   userLogged;
-
+  userRole: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -29,6 +29,9 @@ export class AppComponent {
       // subject isUserLoggedIn ?
       this.authService.isUserLoggedIn.subscribe(res => {
         this.userLogged = res;
+        if ( localStorage.getItem('userToken')) {
+          this.userRole = jwt_decode(localStorage.getItem("userToken")).role;
+        }
       });
 
       this.authService.isUserTokenInStorage();
@@ -36,6 +39,7 @@ export class AppComponent {
 
   logout() {
     this.router.navigate(['']);
+    this.userRole = '';
     this.authService.logout();
   }
 }

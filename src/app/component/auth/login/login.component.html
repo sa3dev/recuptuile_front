@@ -2,10 +2,14 @@
 <mat-spinner *ngIf="isLoading"></mat-spinner>
 
 <form *ngIf="!isLoading" [formGroup]="loginForm" class="login_form" (ngSubmit)="onSubmit()">
-  <p>
-    name: <b> test@gmail.com </b> <br>
-    password: <b> 1234 ou test </b>
-  </p>
+  <div>
+    <p>
+      name: <b> test@gmail.com </b>  pass: <b> 1234 ou test </b>
+    </p>
+    <p>
+      name: <b>livreur@gmail.com</b> pass: <b>test</b>
+    </p>
+  </div>
   <mat-form-field class="login_full_width">
     <input matInput type="email" formControlName="email" placeholder="EMAIL" required>
   </mat-form-field>

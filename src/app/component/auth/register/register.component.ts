@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
   isLoading = false;
   registerFormGroup: FormGroup;
+  @Output() userRegister = new EventEmitter<any>();
 
   constructor(
     private snackBar: MatSnackBar,
@@ -52,7 +53,11 @@ export class RegisterComponent implements OnInit {
           this.isLoading = false;
           this.registerFormGroup.reset();
 
-          this.router.navigate(['/recup']);
+          console.log(res);
+
+          this.userRegister.emit(res);
+
+          // this.router.navigate(['/recup']);
         },
           err => {
             // console.log(err);

@@ -28,6 +28,9 @@ const routes: Routes = [
       { path: 'detail/:id', component: RecupDetailComponent },
     ]
   },
+  // {
+  //   // path: 'admin' , compo
+  // },
   {
     path: 'auth/reset-password', component: ResetPasswordComponent
   },
