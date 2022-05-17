@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subject } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -11,14 +11,14 @@ import * as jwt_decode from 'jwt-decode';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   userLogged;
   userRole: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),
-      shareReplay()
+      // shareReplay()
     );
 
   constructor(
@@ -34,7 +34,11 @@ export class AppComponent {
         }
       });
 
-      this.authService.isUserTokenInStorage();
+      // this.authService.isUserTokenInStorage();
+  }
+
+  ngOnInit(): void {
+      
   }
 
   logout() {

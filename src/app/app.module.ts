@@ -31,13 +31,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { AllDeliveryComponent } from './component/delivery/all-delivery/all-delivery.component';
-import { DetailDeliveryComponent } from './component/delivery/detail-delivery/detail-delivery.component';
+import { LivraisonModule } from './component/livraison/livraison.module';
 
 // the second parameter 'fr-FR' is optional
 registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
-  declarations: [AppComponent, RecupComponent, ResetPasswordComponent, AllDeliveryComponent, DetailDeliveryComponent],
+  declarations: [
+    AppComponent,
+    RecupComponent,
+    ResetPasswordComponent,
+    AllDeliveryComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -61,19 +66,21 @@ registerLocaleData(localeFr, 'fr-FR');
     FormsModule,
     ReactiveFormsModule,
     AuthModule,
+
     AccountCredentialDetailModule,
     MyprofilModule,
-
+    LivraisonModule
   ],
   providers: [
     {
-      provide: LOCALE_ID, useValue : 'fr-FR'
+      provide: LOCALE_ID,
+      useValue: "fr-FR"
     }
     // {
-      // provide: HTTP_INTERCEPTORS,
-      // useClass: AuthInterceptorService,
-      // multi: true
-      // }
+    // provide: HTTP_INTERCEPTORS,
+    // useClass: AuthInterceptorService,
+    // multi: true
+    // }
   ],
   bootstrap: [AppComponent]
 })

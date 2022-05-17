@@ -9,7 +9,7 @@
       </a> -->
       <a mat-list-item routerLink="">Home</a>
       <a *ngIf="userLogged && userRole === 'user'" mat-list-item routerLink="/recup">Récuperations</a>
-      <a *ngIf="userLogged && userRole === 'livreur'" mat-list-item routerLink="/livraisons">Mes livraisons</a>
+      <a *ngIf="userLogged && userRole === 'livreur'" mat-list-item routerLink="/livraison/all">Mes livraisons</a>
 
       <a *ngIf="userRole === 'admin'" mat-list-item routerLink="/admin">Admin</a>
 

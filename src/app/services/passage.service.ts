@@ -18,6 +18,7 @@ export class PassageService {
 
   constructor(private http: HttpClient) { }
 
+  // get all passage of user
   getAllPassageOfUser() {
     const token = localStorage.getItem('userToken');
     if (token) {
@@ -33,6 +34,7 @@ export class PassageService {
     }
   }
 
+  // create a new livraison or demande of passage
   newPassage(data) {
     const token = localStorage.getItem('userToken');
 
@@ -49,6 +51,24 @@ export class PassageService {
 
       );
     }
+  }
+
+  getOnepassage(index: number) {
+    const token = localStorage.getItem('userToken');
+
+    if (this.allPassage.getValue() !== null) {
+      console.log(this.allPassage[index]);
+      return this.allPassage[index];
+    } else {
+      return this.http.get(
+        PassageService.API + PassageService.PASSAGE,
+        { headers: new HttpHeaders().set('Authorization', token) }).pipe(
+          tap((items: any[]) => this.allPassage.next(items))
+        ).pipe(
+          tap(x => console.log(x))
+        );
+    }
+    // return this.allPassage[index];
   }
 
 }

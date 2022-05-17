@@ -1,0 +1,19 @@
+<div class="detail-livraison">
+
+    <!-- {{ livraison | json }} -->
+    <div class="info">
+        <h3>Adresse: {{ livraison.adress }}</h3>
+        <p>Supérficie: {{ livraison.superficies ? livraison.superficies+' m2' : 'non-renseigné' }}</p>
+
+        <button mat-stroked-button color="accent">
+            {{ livraison.dateofpassage |  date:'d MMMM y' }}
+        </button>
+    </div>
+
+    <div class="map">
+        <a target="_blank" href="https://www.google.com/maps/search/?api=1&query=47.5951518,-122.3316393">
+            <img src="/assets/images/googlemap.jpg" alt="">
+        </a>
+    </div>
+
+</div>

@@ -1,0 +1,27 @@
+.detail-livraison {
+    border: 1px solid darkcyan;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-between;    
+}
+
+.detail-livraison .map img {
+    width: 100%;
+}
+
+.detail-livraison .map img:hover {
+    cursor: pointer;
+}
+
+.detail-livraison .map { 
+    width: 30%;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+

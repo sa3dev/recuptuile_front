@@ -74,7 +74,10 @@ export class AuthService {
    */
    isUserTokenInStorage() {
     const user = localStorage.getItem('userToken');
-    if (user ) {
+
+    console.log('dans le isUserTokenInStorage des le debut de lapp')
+    console.log(user)
+    if ( user != null || user) {
       this.userSubject.next(user);
       this.isUserLoggedIn.next(true);
     } else {
