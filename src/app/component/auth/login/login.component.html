@@ -4,11 +4,12 @@
 <form *ngIf="!isLoading" [formGroup]="loginForm" class="login_form" (ngSubmit)="onSubmit()">
   <div>
     <p>
-      name: <b> test@gmail.com </b>  pass: <b> 1234 ou test </b>
-    </p>
-    <p>
+      name: <b> test@gmail.com </b>  pass: <b> test </b>
+     </p>
+     <!-- 1234 ou  -->
+    <!-- <p>
       name: <b>livreur@gmail.com</b> pass: <b>test</b>
-    </p>
+    </p> -->
   </div>
   <mat-form-field class="login_full_width">
     <input matInput type="email" formControlName="email" placeholder="EMAIL" required>
