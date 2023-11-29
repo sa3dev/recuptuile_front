@@ -37,7 +37,7 @@ import { AgmCoreModule } from '@agm/core';
     MatCardModule,
     MatButtonModule,
     AgmCoreModule.forRoot({
-      apiKey: "AIzaSyBFqj07Fg-88ryWPEvwrbF2fg1d8G0MUec"
+      apiKey: "...APIFromGoogleNormalyy..."
     })
   ],
   exports: [NewRecupComponent, HowItWorkComponent, AllRecupComponent],
